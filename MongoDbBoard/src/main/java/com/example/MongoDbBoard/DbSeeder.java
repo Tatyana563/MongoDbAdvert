@@ -1,5 +1,6 @@
 package com.example.MongoDbBoard;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class DbSeeder implements CommandLineRunner {
     private AdvertRepository advertRepository;
 
+    @Autowired
     public DbSeeder(AdvertRepository advertRepository) {
         this.advertRepository = advertRepository;
     }

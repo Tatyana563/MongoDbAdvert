@@ -1,6 +1,7 @@
 package com.example.MongoDbBoard;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +16,12 @@ import java.util.Optional;
 @RequestMapping("/adverts")
 public class AdvertController {
     private AdvertRepository advertRepository;
-    public DbSeeder dbSeeder = new DbSeeder();
+    public DbSeeder dbSeeder;
 
-    public AdvertController(AdvertRepository advertRepository) {
+    @Autowired
+    public AdvertController(AdvertRepository advertRepository, DbSeeder dbSeeder) {
         this.advertRepository = advertRepository;
+        this.dbSeeder = dbSeeder;
     }
 
   /*  @GetMapping("/all") - ok
