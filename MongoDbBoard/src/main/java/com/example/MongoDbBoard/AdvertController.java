@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.QueryParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +15,23 @@ import java.util.Optional;
 @RequestMapping("/adverts")
 public class AdvertController {
     private AdvertRepository advertRepository;
+    public DbSeeder dbSeeder = new DbSeeder();
 
     public AdvertController(AdvertRepository advertRepository) {
         this.advertRepository = advertRepository;
     }
-    @GetMapping("/all")
+
+  /*  @GetMapping("/all") - ok
     public List<Advert> getAll(){
         List<Advert> adverts = this.advertRepository.findAll();
 
         return adverts;
+    }*/
+//http://localhost:8095/adverts/all?start=0&size=1 - not ok
+    @GetMapping("/all")
+    public List<Advert> getAll(@QueryParam("start") int start,
+                               @QueryParam("size") int size){
+     return dbSeeder.getAllBooksPaginated(start,size);
     }
     //http://localhost:8095/adverts/5e4400d3dc2dfb20689e67f4 - ok
     @GetMapping("/{id}")
@@ -33,7 +42,7 @@ public class AdvertController {
     }
 //http://localhost:8095/adverts/price/600 - ok
     @GetMapping("/price/{maxPrice}")
-    public List<Advert> getByPricePerNight(@PathVariable("maxPrice") int maxPrice){
+    public List<Advert> getByPrice(@PathVariable("maxPrice") int maxPrice){
         List<Advert> books= this.advertRepository.findByPriceLessThan(maxPrice);
         return books;
     }

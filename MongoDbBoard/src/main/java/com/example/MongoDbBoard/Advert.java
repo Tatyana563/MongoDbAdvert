@@ -3,6 +3,7 @@ package com.example.MongoDbBoard;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "Advert")
 public class Advert {
     @Id
@@ -54,5 +55,4 @@ public class Advert {
     public String getId() {
         return id;
     }
-
 }

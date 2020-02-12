@@ -13,5 +13,4 @@ Advert findById(String id);
 
     @Query(value = "{author.name:?0}")
     List<Advert> findByAuthor(String name);
-
 }
