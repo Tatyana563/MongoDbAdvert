@@ -1,4 +1,4 @@
-package com.example.MongoDbBoard;
+package com.example.MongoDbBoard.model;
 
 public class Author {
   private   String name;

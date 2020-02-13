@@ -1,7 +1,9 @@
-package com.example.MongoDbBoard;
+package com.example.MongoDbBoard.controller;
 
 import com.example.MongoDbBoard.model.Advert;
+import com.example.MongoDbBoard.model.QAdvert;
 import com.example.MongoDbBoard.service.AdvertServiceImpl;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -66,10 +68,11 @@ public class AdvertController {
     }
 
     //http://localhost:8095/adverts/recommended - ok
-    /*@GetMapping("/recommended")
-    public List<Advert> getRecommended() {
-        final int maxPrice = 1000;
-        final String location = "Nikolaev";
+    @GetMapping("/recommended")
+    public ResponseEntity<Iterable<Advert>> getRecommended(@RequestParam(name = "maxPrice") int maxPrice,
+                                                             @RequestParam(name = "location") String location) {
+        /*final int maxPrice = 1000;
+        final String location = "Nikolaev";*/
 
         // create a query class (QAdvert)
         QAdvert qAdvert = new QAdvert("ad");
@@ -79,7 +82,7 @@ public class AdvertController {
         BooleanExpression filterByLocation = qAdvert.author.city.containsIgnoreCase(location);
 
         // we can then pass the filters to the findAll() method
-        return (List<Advert>) this.advertRepository.findAll(filterByPrice.and(filterByLocation));
-    }*/
+        return ResponseEntity.ok(this.service.findAllByFilter(filterByPrice.and(filterByLocation)));
+    }
 
 }

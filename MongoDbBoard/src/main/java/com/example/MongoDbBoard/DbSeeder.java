@@ -1,5 +1,8 @@
 package com.example.MongoDbBoard;
 
+import com.example.MongoDbBoard.model.Advert;
+import com.example.MongoDbBoard.model.Author;
+import com.example.MongoDbBoard.repository.AdvertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
