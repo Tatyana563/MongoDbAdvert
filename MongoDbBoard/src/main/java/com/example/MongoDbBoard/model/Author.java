@@ -1,10 +1,10 @@
 package com.example.MongoDbBoard.model;
 
 public class Author {
-  private   String name;
-  private String phone;
-  private String email;
-  private String city;
+    private String name;
+    private String phone;
+    private String email;
+    private String city;
 
     public String getName() {
         return name;

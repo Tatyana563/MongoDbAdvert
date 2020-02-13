@@ -51,9 +51,4 @@ public class DbSeeder implements CommandLineRunner {
         books = Arrays.asList(book, book2, book3, book4);
         this.advertRepository.save(books);
     }
-
-    public List<Advert> getAllBooksPaginated(int start, int size) {
-        List<Advert> list = advertRepository.findAll();
-        return list.subList(start, start + size);
-    }
 }
