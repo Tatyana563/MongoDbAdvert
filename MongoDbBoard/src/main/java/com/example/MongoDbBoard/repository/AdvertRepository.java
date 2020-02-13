@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.List;
-
+//repository
 @Repository
 public interface AdvertRepository extends MongoRepository<Advert, String>, QueryDslPredicateExecutor<Advert> {
     Advert findById(String id);
