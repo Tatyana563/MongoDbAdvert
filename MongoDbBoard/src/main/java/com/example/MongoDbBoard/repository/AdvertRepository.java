@@ -6,9 +6,11 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public interface AdvertRepository extends MongoRepository<Advert, String>, QueryDslPredicateExecutor<Advert> {
-Advert findById(String id);
+    Advert findById(String id);
+
     List<Advert> findByPriceLessThan(int maxPrice);
 
     @Query(value = "{author.name:?0}")
