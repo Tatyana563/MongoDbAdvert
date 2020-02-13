@@ -18,17 +18,10 @@ public class AdvertServiceImpl {
     @Autowired
     private AdvertRepository repository;
 
-    public Collection<Advert> findAll() {
-        Collection<Advert> adverts = repository.findAll();
-        return CollectionUtils.isEmpty(adverts) ? Collections.emptyList() : Collections.unmodifiableCollection(adverts);
-    }
-
-
     public Collection<Advert> findAll(Pageable pageable) {
         Collection<Advert> adverts = repository.findAll(pageable).getContent();
         return CollectionUtils.isEmpty(adverts) ? Collections.emptyList() : Collections.unmodifiableCollection(adverts);
     }
-
 
     public Advert findById(String id) {
         if (Strings.isNullOrEmpty(id)) throw new IllegalArgumentException("id must be set");

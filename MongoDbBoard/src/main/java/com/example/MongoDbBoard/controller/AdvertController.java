@@ -55,6 +55,7 @@ public class AdvertController {
     public ResponseEntity<Iterable<Advert>> getRecommended(@RequestParam(name = "maxPrice") int maxPrice,
                                                            @RequestParam(name = "location") String location) {
 
+
         // create a query class (QAdvert)
         QAdvert qAdvert = new QAdvert("ad");
 
