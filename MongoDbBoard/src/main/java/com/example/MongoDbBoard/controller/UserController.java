@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
 @Controller
 public class UserController {
 
@@ -31,24 +30,25 @@ public class UserController {
             @RequestParam("password") String password,
             @RequestParam("phone") String phone,
             @RequestParam("email") String email,
-             @RequestParam("city") String city,
-            @RequestParam("role") String role
-    )  {
+            @RequestParam("city") String city
+
+    ) {
         final Author userEntity = new Author();
         userEntity.setName(name);
         userEntity.setEmail(email);
         userEntity.setPhone(phone);
         userEntity.setPassword(passwordEncoder.encode(password));
         userEntity.setCity(city);
-        userEntity.setRole(role);
         userService.save(userEntity);
         return "/login";
     }
+
     @GetMapping("/login")
     public String newPageLogin(final Model model) {
         return "login";
 
     }
+
     @GetMapping("/registration")
     public String newPageRegistration(final Model model) {
         return "registration";
