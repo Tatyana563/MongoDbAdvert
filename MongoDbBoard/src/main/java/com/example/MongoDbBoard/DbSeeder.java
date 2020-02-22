@@ -42,7 +42,8 @@ public class DbSeeder implements CommandLineRunner {
         );
         Advert book4 = new Advert(
                 "Head First Java", 1200, "The most important selling points of Head First Java is its simplicity and super-effective real-life analogie",
-                new Author("Mark", "+380682678652", "mark@gmail.com", "Nikolaev")
+                new Author("Mark", "+380682678652", "mark@gmail.com", "Nikolaev","ADMIN_ROLE","123")
+
         );
         // drop all adverts
         this.advertRepository.deleteAll();
