@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class DbSeeder implements CommandLineRunner {
@@ -27,6 +25,7 @@ private RoleRepository roleRepository;
 
 
     List<Advert> books = new ArrayList<>();
+    Set<Role> roles = new TreeSet<>();
 
     public DbSeeder() {
 
@@ -51,14 +50,17 @@ private RoleRepository roleRepository;
                 new Author("Mark", "+380682678652", "mark@gmail.com", "Nikolaev","ADMIN_ROLE","123")
 
         );
-        Role role = new Role("1","ADMIN");
+        Role admin = new Role("1","ADMIN");
+        Role user = new Role("2","USER");
         // drop all adverts
         this.advertRepository.deleteAll();
-
+        roleRepository.deleteAll();;
         //add our adverts to the database
         books = Arrays.asList(book, book2, book3, book4);
+
         this.advertRepository.save(books);
 
-        roleRepository.save(role);
+        roleRepository.save(admin);
+        roleRepository.save(user);
     }
 }

@@ -5,4 +5,6 @@ import com.example.MongoDbBoard.model.User;
 
 public interface UserService {
     public void save(User user);
+
+    void deleteById(String empId);
 }

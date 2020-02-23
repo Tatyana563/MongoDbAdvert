@@ -33,11 +33,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(true);
-       // Role userRole = roleRepository.findByRole("ADMIN");
-        Role userRole = new Role("1","ADMIN");
+        Role userRole = new Role("2","USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

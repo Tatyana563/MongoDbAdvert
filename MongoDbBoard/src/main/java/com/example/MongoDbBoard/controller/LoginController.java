@@ -2,11 +2,14 @@ package com.example.MongoDbBoard.controller;
 
 import com.example.MongoDbBoard.model.User;
 import com.example.MongoDbBoard.service.CustomUserDetailsService;
+import com.example.MongoDbBoard.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,11 +21,12 @@ public class LoginController {
 
     @Autowired
     private CustomUserDetailsService userService;
-
+@Autowired
+    UserServiceImpl userServiceImpl;
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login2");
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
@@ -50,7 +54,7 @@ public class LoginController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("login2");
+            modelAndView.setViewName("login");
 
         }
         return modelAndView;
@@ -74,6 +78,8 @@ public class LoginController {
         modelAndView.setViewName("home");
         return modelAndView;
     }
+
+
 
 }
 

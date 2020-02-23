@@ -18,14 +18,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(
-//        prePostEnabled = true,
-//        securedEnabled = true,
-//        jsr250Enabled = true)
+@EnableGlobalMethodSecurity(
+        prePostEnabled = true,
+       securedEnabled = true,
+      jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+   @Autowired
     CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
+
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -39,8 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
-                .antMatchers("/dashboard/**").hasAuthority("ADMIN").anyRequest()
-                .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler);
+                .antMatchers("/dashboard").hasAuthority("ADMIN")
+                .antMatchers("/adverts").hasAuthority("ADMIN").anyRequest().authenticated()
+                .and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler);
     }
 
     @Bean
@@ -50,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        UserDetailsService userDetailsService = mongoUserDetails();
+      UserDetailsService userDetailsService = mongoUserDetails();
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
