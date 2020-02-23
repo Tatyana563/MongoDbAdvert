@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-//@ComponentScan(basePackages = {"com.example.MongoDbBoard.controller"})
+
 @SpringBootApplication
 public class MongoDbBoardApplication extends SpringBootServletInitializer {
 

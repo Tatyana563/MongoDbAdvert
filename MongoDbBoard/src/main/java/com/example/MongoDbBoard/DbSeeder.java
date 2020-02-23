@@ -2,7 +2,9 @@ package com.example.MongoDbBoard;
 
 import com.example.MongoDbBoard.model.Advert;
 import com.example.MongoDbBoard.model.Author;
+import com.example.MongoDbBoard.model.Role;
 import com.example.MongoDbBoard.repository.AdvertRepository;
+import com.example.MongoDbBoard.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,11 +16,15 @@ import java.util.List;
 @Component
 public class DbSeeder implements CommandLineRunner {
     private AdvertRepository advertRepository;
+private RoleRepository roleRepository;
 
     @Autowired
-    public DbSeeder(AdvertRepository advertRepository) {
+    public DbSeeder(AdvertRepository advertRepository, RoleRepository roleRepository) {
         this.advertRepository = advertRepository;
+        this.roleRepository = roleRepository;
     }
+
+
 
     List<Advert> books = new ArrayList<>();
 
@@ -45,11 +51,14 @@ public class DbSeeder implements CommandLineRunner {
                 new Author("Mark", "+380682678652", "mark@gmail.com", "Nikolaev","ADMIN_ROLE","123")
 
         );
+        Role role = new Role("1","ADMIN");
         // drop all adverts
         this.advertRepository.deleteAll();
 
         //add our adverts to the database
         books = Arrays.asList(book, book2, book3, book4);
         this.advertRepository.save(books);
+
+        roleRepository.save(role);
     }
 }

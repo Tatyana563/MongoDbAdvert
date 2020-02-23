@@ -1,7 +1,8 @@
 package com.example.MongoDbBoard.service;
 
 import com.example.MongoDbBoard.model.Author;
+import com.example.MongoDbBoard.model.User;
 
 public interface UserService {
-    void save(Author author);
+    public void save(User user);
 }
