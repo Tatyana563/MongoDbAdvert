@@ -8,13 +8,13 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
-
 @Configuration
 public abstract class WebMvcConfig implements WebMvcConfigurer {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
 
@@ -23,7 +23,7 @@ public abstract class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/dashboard").setViewName("dashboard");
         registry.addViewController("/login").setViewName("login");
     }
-    }
+}
 
 
 

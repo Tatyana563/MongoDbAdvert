@@ -14,14 +14,13 @@ import java.util.*;
 @Component
 public class DbSeeder implements CommandLineRunner {
     private AdvertRepository advertRepository;
-private RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
     public DbSeeder(AdvertRepository advertRepository, RoleRepository roleRepository) {
         this.advertRepository = advertRepository;
         this.roleRepository = roleRepository;
     }
-
 
 
     List<Advert> books = new ArrayList<>();
@@ -47,14 +46,15 @@ private RoleRepository roleRepository;
         );
         Advert book4 = new Advert(
                 "Head First Java", 1200, "The most important selling points of Head First Java is its simplicity and super-effective real-life analogie",
-                new Author("Mark", "+380682678652", "mark@gmail.com", "Nikolaev","ADMIN_ROLE","123")
+                new Author("Mark", "+380682678652", "mark@gmail.com", "Nikolaev", "ADMIN_ROLE", "123")
 
         );
-        Role admin = new Role("1","ADMIN");
-        Role user = new Role("2","USER");
+        Role admin = new Role("1", "ADMIN");
+        Role user = new Role("2", "USER");
         // drop all adverts
         this.advertRepository.deleteAll();
-        roleRepository.deleteAll();;
+        roleRepository.deleteAll();
+        ;
         //add our adverts to the database
         books = Arrays.asList(book, book2, book3, book4);
 

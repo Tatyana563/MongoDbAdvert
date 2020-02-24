@@ -1,7 +1,6 @@
 package com.example.MongoDbBoard.controller;
 
 import com.example.MongoDbBoard.model.Advert;
-
 import com.example.MongoDbBoard.model.QAdvert;
 import com.example.MongoDbBoard.repository.AdvertRepository;
 import com.example.MongoDbBoard.service.AdvertServiceImpl;
@@ -10,14 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Objects;
 
-//@Controller
+
 @RestController
 
 //@Secured("ADMIN")

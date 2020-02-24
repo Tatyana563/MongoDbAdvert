@@ -8,8 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +19,9 @@ public class LoginController {
 
     @Autowired
     private CustomUserDetailsService userService;
-@Autowired
+    @Autowired
     UserServiceImpl userServiceImpl;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
@@ -66,19 +65,17 @@ public class LoginController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("currentUser", user);
-        // modelAndView.addObject("fullName", "Welcome " + user.getFullname());
-        // modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
         modelAndView.setViewName("dashboard");
         return modelAndView;
     }
+
     // start page with redirect
-    @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home");
         return modelAndView;
     }
-
 
 
 }

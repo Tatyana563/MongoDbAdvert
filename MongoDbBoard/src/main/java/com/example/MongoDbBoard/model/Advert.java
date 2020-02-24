@@ -1,9 +1,14 @@
 package com.example.MongoDbBoard.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@NoArgsConstructor
+@Setter
+@Getter
 @Document(collection = "Advert")
 public class Advert {
     @Id
@@ -18,41 +23,5 @@ public class Advert {
         this.price = price;
         this.description = description;
         this.author = author;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public String getId() {
-        return id;
     }
 }
