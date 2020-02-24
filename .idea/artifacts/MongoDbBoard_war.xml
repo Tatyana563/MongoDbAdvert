@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MongoDbBoard:war">
+    <output-path>$PROJECT_DIR$/MongoDbBoard/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>MongoDbBoard</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="adverts.war">
+      <element id="artifact" artifact-name="MongoDbBoard:war exploded" />
+    </root>
+  </artifact>
+</component>

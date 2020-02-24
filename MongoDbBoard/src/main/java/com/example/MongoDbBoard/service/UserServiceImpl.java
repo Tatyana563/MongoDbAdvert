@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -48,5 +49,11 @@ public void updateUserRole(String id, String role){
     user.setRoles(roles);
  mongoTemplate.save(user, "user");
 }
+    public Set<Role> findUserRole(String id) {
 
+        User user = mongoTemplate.findOne(
+                Query.query(Criteria.where("id").is(id)), User.class);
+        Set<Role> roles= user.getRoles();
+        return roles;
+    }
 }

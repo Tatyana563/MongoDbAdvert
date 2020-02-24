@@ -1,6 +1,7 @@
 package com.example.MongoDbBoard.controller;
 
 import com.example.MongoDbBoard.model.Advert;
+
 import com.example.MongoDbBoard.model.QAdvert;
 import com.example.MongoDbBoard.repository.AdvertRepository;
 import com.example.MongoDbBoard.service.AdvertServiceImpl;

@@ -24,7 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
       jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-   @Autowired
+  @Autowired
     CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
 
@@ -41,8 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/dashboard").hasAuthority("ADMIN")
-                .antMatchers("/adverts").hasAuthority("ADMIN").anyRequest().authenticated()
-                .and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler);
+                .antMatchers("/adverts").hasAuthority("ADMIN")
+             .anyRequest().authenticated()
+     .and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler);
     }
 
     @Bean
