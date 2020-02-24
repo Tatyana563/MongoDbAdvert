@@ -22,12 +22,10 @@ public class DbSeeder implements CommandLineRunner {
         this.roleRepository = roleRepository;
     }
 
-
     List<Advert> books = new ArrayList<>();
     Set<Role> roles = new TreeSet<>();
 
     public DbSeeder() {
-
     }
 
     @Override
@@ -54,7 +52,7 @@ public class DbSeeder implements CommandLineRunner {
         // drop all adverts
         this.advertRepository.deleteAll();
         roleRepository.deleteAll();
-        ;
+
         //add our adverts to the database
         books = Arrays.asList(book, book2, book3, book4);
 

@@ -25,6 +25,4 @@ public class User {
 
     @DBRef
     private Set<Role> roles;
-
-
 }

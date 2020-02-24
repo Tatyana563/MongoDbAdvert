@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+
 @NoArgsConstructor
 @Setter
 @Getter
@@ -32,6 +33,4 @@ public class Author {
         this.role = role;
         this.password = password;
     }
-
-
 }
