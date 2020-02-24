@@ -23,7 +23,7 @@ public class UserRestController {
         return ResponseEntity.ok(userService.findById(id));
     }
 
-    //http://localhost:8095/users/delete/e522d1adc2dfb1bacfe2f06 - not ok
+    //http://localhost:8095/users/delete/5e53b784dc2dfb1facc53a4e - ok
     @GetMapping("/delete/{id}")
     public void deleteById(@PathVariable("id") String id) {
         userService.deleteById(id);

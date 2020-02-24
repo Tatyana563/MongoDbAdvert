@@ -23,10 +23,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     RoleRepository roleRepository;
 
-//    @Override
-//    public void save(User user) {
-//        userRepository.save(user);
-//    }
 
     @Override
     public void deleteById(String empId) {
