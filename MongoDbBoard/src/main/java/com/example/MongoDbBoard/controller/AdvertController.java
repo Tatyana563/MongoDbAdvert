@@ -27,7 +27,7 @@ public class AdvertController {
     private AdvertRepository advertRepository;
 
     //http://localhost:8095/adverts/all?page=0&size=2 - ok
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<Collection<Advert>> getAll(@RequestParam(name = "page", required = false) Integer page,
                                                      @RequestParam(name = "size", required = false) Integer size) {
         Pageable pageable = new PageRequest(Objects.isNull(page) ? 0 : page, Objects.isNull(size) ? 2 : size);

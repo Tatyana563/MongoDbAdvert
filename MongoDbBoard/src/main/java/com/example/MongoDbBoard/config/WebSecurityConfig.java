@@ -42,6 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/dashboard").hasAuthority("ADMIN")
+                .antMatchers("/adverts").permitAll()
+                .antMatchers("/adverts/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler);
     }
